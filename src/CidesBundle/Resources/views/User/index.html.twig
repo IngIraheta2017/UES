@@ -29,7 +29,16 @@
 									{% if user.role == 'ROLE_ADMIN' %}
 											<strong>Administrador</strong>
 									{% elseif user.role == 'ROLE_USER' %}
-											<strong>User</strong>
+											<strong>USER</strong>
+                  {% elseif user.role == 'ROLE_COOR' %}
+    									<strong>COORDINADOR</strong>
+                  {% elseif user.role == 'ROLE_INVES' %}
+                      <strong>INVESTIGADOR</strong>
+                  {% elseif user.role == 'ROLE_lIDER_INVES' %}
+                      <strong>INVESTIGAR LIDER</strong>
+                    {% elseif user.role == 'ROLE_STUDENT' %}
+                      <strong>ESTUDIANTE</strong>
+
 							    {% endif %}
 								</td>
 							<td class="actions">
