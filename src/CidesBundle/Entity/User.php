@@ -3,7 +3,7 @@
 namespace CidesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Security\Core\User\UserInterface;
 /**
  * User
  *
@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="CidesBundle\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class User
+class User  implements UserInterface
 {
     /**
      * @var int
@@ -319,5 +319,17 @@ class User
   {
       $this->updatedAt = new \DateTime();
   }
+  public function getRoles()
+    {
+        return array($this->role);
+    }
 
+    public function getSalt()
+    {
+        return null;
+    }
+    public function eraseCredentials()
+    {
+
+    }
 }
