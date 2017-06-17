@@ -2,11 +2,15 @@ cides_homepage:
     path:     /
     defaults: { _controller: CidesBundle:Default:index }
 cides_homepage_index:
-    path:     /user/
+    path:     /user/index
     defaults: { _controller: CidesBundle:User:index }
 cides_homepage_add:
     path:     /user/add
     defaults: { _controller: CidesBundle:User:add }
+cides_homepage_create:
+    path:     /user/create
+    defaults: { _controller: CidesBundle:User:create }
+    methods:  POST
 cides_homepage_edit:
     path:     /user/edit/{id}
     defaults: { _controller: CidesBundle:User:edit }
