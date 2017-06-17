@@ -4,6 +4,7 @@ namespace CidesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 /**
  * User
  *
@@ -11,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass="CidesBundle\Repository\UserRepository")
  * @ORM\HasLifecycleCallbacks()
  */
-class User  implements UserInterface
+class User  implements AdvancedUserInterface, \Serializable
 {
     /**
      * @var int
@@ -332,4 +333,49 @@ class User  implements UserInterface
     {
 
     }
+    public function __construct()
+  {
+      $this->isActive = true;
+  }
+  /** @see \Serializable::serialize() */
+  public function serialize()
+  {
+      return serialize(array(
+          $this->id,
+          $this->username,
+          $this->password,
+          $this->isActive
+      ));
+  }
+
+  /** @see \Serializable::unserialize() */
+  public function unserialize($serialized)
+  {
+      list (
+          $this->id,
+          $this->username,
+          $this->password,
+          $this->isActive
+      ) = unserialize($serialized);
+  }
+
+  public function isAccountNonExpired()
+  {
+      return true;
+  }
+
+  public function isAccountNonLocked()
+  {
+      return true;
+  }
+
+  public function isCredentialsNonExpired()
+  {
+      return true;
+  }
+
+  public function isEnabled()
+  {
+      return $this->isActive;
+  }
 }

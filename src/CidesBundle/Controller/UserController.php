@@ -10,6 +10,10 @@ use CidesBundle\Entity\User;
 
 class UserController extends Controller
 {
+    public function homeAction()
+    {
+        return $this->render('CidesBundle:User:home.html.twig');
+    }
     public function indexAction()
     {
       $em = $this->getDoctrine()->getManager();

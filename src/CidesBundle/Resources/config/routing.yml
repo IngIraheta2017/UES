@@ -1,6 +1,3 @@
-cides_homepage:
-    path:     /
-    defaults: { _controller: CidesBundle:Default:index }
 cides_homepage_index:
     path:     /user/index
     defaults: { _controller: CidesBundle:User:index }
@@ -20,3 +17,19 @@ cides_homepage_view:
 cides_homepage_delete:
     path:     /user/delete/{id}
     defaults: { _controller: CidesBundle:User:delete }
+# Autentication
+
+cides_homepage:
+    path:     /
+    defaults: { _controller: CidesBundle:User:home }
+
+cides_login:
+    path:     /login
+    defaults: { _controller: CidesBundle:Security:login }
+
+cides_login_check:
+    path:     /login_check
+    defaults: { _controller: CidesBundle:Security:loginCheck }
+
+cides_logout:
+    path:     /logout
