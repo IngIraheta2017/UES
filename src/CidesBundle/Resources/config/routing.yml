@@ -1,0 +1,3 @@
+cides_homepage:
+    path:     /
+    defaults: { _controller: CidesBundle:Default:index }
