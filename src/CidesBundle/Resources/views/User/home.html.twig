@@ -6,9 +6,9 @@
         <h2 class="text-center">
             {{ 'Welcome'|trans }}
             {% if app.user.role == 'ROLE_ADMIN' %}
-                {{ 'Administrator'|trans }}
+                {{ '-Administrator '|trans }}
             {% elseif app.user.role == 'ROLE_USER' %}
-                {{ 'User'|trans }}
+                {{ '-User'|trans }}
             {% endif %}
             :
             {{ app.user.username }}
